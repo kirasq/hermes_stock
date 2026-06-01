@@ -273,6 +273,26 @@ def main():
     print(f"每日汇总推送 - {date_str}")
     print("=" * 60)
     
+    # 0. 转换所有 Markdown 到 HTML（先转换！
+    print("\n📝 转换 Markdown → HTML...")
+    try:
+        # 调用 md2html.py
+        import subprocess
+        md2html = REPO_DIR / "md2html.py"
+        if md2html.exists():
+            ret = subprocess.run(
+                f"python3 {md2html} daily backtest strategy",
+                shell=True, capture_output=True, text=True
+            )
+            if ret.returncode == 0:
+                print("✅ Markdown → HTML 转换完成")
+            else:
+                print(f"⚠️ 转换有警告：{ret.stderr[:200]}")
+        else:
+            print("⚠️ md2html.py 不存在，跳过转换")
+    except Exception as e:
+        print(f"⚠️ 转换失败：{e}")
+    
     # 1. 收集结果
     print("\n📡 收集当日结果...")
     results = collect_daily_results(date_str)
@@ -297,8 +317,8 @@ def main():
         print("\n" + "=" * 60)
         print("✅ 推送完成！")
         print("=" * 60)
-        print(f"\n访问地址：<ADDRESS_REMOVED>")
-        print(f"每日报告：<ADDRESS_REMOVED>summary.md")
+        print(f"\n访问地址：https://kirasq.github.io/hermes_stock/")
+        print(f"每日报告：https://kirasq.github.io/hermes_stock/daily/{date_str}_summary.html")
     else:
         print("\n❌ 推送失败")
         sys.exit(1)

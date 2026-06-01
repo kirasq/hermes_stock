@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日汇总报告 - 2026-06-01 | Hermes 交易系统</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      line-height: 1.7;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+    h1, h2, h3 { margin-top: 32px; margin-bottom: 16px; font-weight: 600; line-height: 1.25; }
+    h1 { font-size: 32px; color: #58a6ff; border-bottom: 1px solid #21262d; padding-bottom: 10px; letter-spacing: -0.5px; }
+    h2 { font-size: 24px; color: #f0c674; }
+    h3 { font-size: 20px; color: #d2a8f3; }
+    h4 { font-size: 16px; color: #8b949e; text-transform: uppercase; letter-spacing: 1px; margin-top: 24px; }
+    p { margin: 12px 0; }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; color: #79c0ff; }
+    strong { color: #f0f6fc; }
+    em { color: #8b949e; }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 20px 0;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid #21262d;
+    }
+    th {
+      background: #1c2128;
+      color: #8b949e;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #1c2333; }
+    code {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: 'SF Mono', 'Monaco', 'Menlo', monospace;
+      font-size: 14px;
+      color: #ffa657;
+    }
+    pre {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+    pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      color: #79c0ff;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    blockquote {
+      border-left: 4px solid #30363d;
+      padding: 8px 16px;
+      margin: 16px 0;
+      background: #161b22;
+      border-radius: 0 6px 6px 0;
+      color: #8b949e;
+    }
+    ul, ol { margin: 12px 0; padding-left: 24px; }
+    li { margin: 6px 0; }
+    hr {
+      border: none;
+      border-top: 1px solid #21262d;
+      margin: 32px 0;
+    }
+    img { max-width: 100%; border-radius: 8px; margin: 16px 0; }
+    .header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #21262d;
+    }
+    .nav-links {
+      display: flex;
+      gap: 12px;
+    }
+    .nav-links a {
+      padding: 6px 14px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      color: #8b949e;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .nav-links a:hover {
+      background: #1c2333;
+      border-color: #58a6ff;
+      color: #58a6ff;
+      text-decoration: none;
+    }
+    .footer {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid #21262d;
+      text-align: center;
+      color: #484f58;
+      font-size: 12px;
+    }
+    .footer a { color: #484f58; }
+    .footer a:hover { color: #8b949e; }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .tag-profit { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
+    .tag-loss { background: rgba(248, 81, 73, 0.15); color: #f85149; }
+    .tag-info { background: rgba(88, 166, 255, 0.15); color: #58a6ff; }
+    .tag-warn { background: rgba(240, 198, 116, 0.15); color: #f0c674; }
+    @media (max-width: 640px) {
+      body { padding: 20px 12px; }
+      h1 { font-size: 24px; }
+      .header-bar { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-bar">
+    <div style="font-weight:600; color:#58a6ff; font-size:14px;">⚡ Hermes 自进化交易系统</div>
+    <div class="nav-links">
+      <a href="/hermes_stock/">🏠 首页</a>
+      <a href="/hermes_stock/daily/">📅 每日报告</a>
+      <a href="/hermes_stock/backtest/">📊 回测</a>
+      <a href="/hermes_stock/strategy/">🧬 策略</a>
+    </div>
+  </div>
+  
+  <h1>每日汇总报告 - 2026-06-01</h1>
+<p>生成时间：2026-06-01 22:58:56</p>
+<hr />
+<h2>📊 持仓状态</h2>
+<table>
+<thead>
+<tr>
+<th>股票代码</th>
+<th>股票名称</th>
+<th>数量</th>
+<th>成本价</th>
+<th>当前价</th>
+<th>盈亏%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>601985</td>
+<td>中国核电</td>
+<td>100</td>
+<td>¥9.17</td>
+<td>0.00</td>
+<td>+0.00%</td>
+</tr>
+</tbody>
+</table>
+<h2>🔄 当日交易</h2>
+<p>共 2 笔交易</p>
+<ul>
+<li><strong>中国核电</strong> (601985) BUY 100股 @ ¥9.17 → 已成</li>
+<li><strong>亿纬锂能</strong> (300014) BUY 100股 @ ¥65.82 → 已撤</li>
+</ul>
+<h2>📈 策略指标</h2>
+<ul>
+<li>总交易数：0</li>
+<li>胜率：0.0%</li>
+<li>盈亏比：0.00</li>
+<li>止损合规率：100.0%</li>
+</ul>
+<h2>⚙️ 当前策略参数</h2>
+<ul>
+<li>止损：-5%</li>
+<li>止盈：30%</li>
+<li>最大仓位：25%</li>
+<li>最小持仓：500 股</li>
+</ul>
+<h2>📋 盘后复盘</h2>
+<h3>⚠️ 纪律违规</h3>
+<ul>
+<li><strong>FOMO追高</strong>（低）：亿纬锂能突破观察价后追入，虽然撤单但反映出纪律性问题</li>
+<li><strong>仓位管理</strong>（低）：中国核电仅100股(918元)，占总资产权重过低(47%)，剩余资金闲置</li>
+</ul>
+  
+  <div class="footer">
+    由 Hermes 自进化交易系统自动生成 · <a href="https://github.com/kirasq/hermes_stock">GitHub 仓库</a><br>
+    更新时间：2026-06-01 23:07:04 · ⚠️ 所有交易均为模拟盘
+  </div>
+</body>
+</html>
