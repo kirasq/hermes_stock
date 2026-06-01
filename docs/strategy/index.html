@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>策略进化日志 | Hermes 交易系统</title>
+  <style>
+    * { margin:0; padding:0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0d1117; color: #c9d1d9; max-width: 900px; margin:0 auto; padding: 20px; }
+    h1 { color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .file-list { list-style: none; padding:0; }
+    .file-list li { padding: 12px; margin: 8px 0; background: #161b22; border: 1px solid #30363d; border-radius: 6px; }
+    .file-list li:hover { background: #1c2333; }
+    .file-name { font-size: 16px; font-weight: 600; color: #f0c674; }
+    .file-desc { font-size: 13px; color: #8b949e; margin-top: 4px; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-left: 8px; }
+    .badge-json { background: rgba(63,185,80,0.15); color: #3fb950; border: 1px solid #3fb950; }
+    .badge-md { background: rgba(88,166,255,0.15); color: #58a6ff; border: 1px solid #58a6ff; }
+    .back-link { display: inline-block; margin-bottom: 20px; padding: 8px 16px; background: #21262d; 
+                   border: 1px solid #30363d; border-radius: 6px; color: #8b949e; font-size: 14px; }
+    .back-link:hover { background: #30363d; color: #c9d1d9; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <a href="/hermes_stock/" class="back-link">← 返回首页</a>
+  <h1>🧬 策略进化日志</h1>
+  <p>自进化策略的历史变更记录</p>
+  <ul class="file-list" id="file-list">
+    <li><a href="evolution_log.json"><span class="file-name">evolution_log.json <span class="badge badge-json">JSON</span></span>
+        <div class="file-desc">完整进化历史（JSON格式）</div></a></li>
+    <li><a href="evolution_report.md"><span class="file-name">evolution_report.md <span class="badge badge-md">MD</span></span>
+        <div class="file-desc">可读进化报告（Markdown）</div></a></li>
+  </ul>
+  <hr style="border-color:#30363d; margin:30px 0;">
+  <p style="text-align:center; color:#484f58;">
+    由 Hermes 自进化交易系统自动生成 · <a href="https://github.com/kirasq/hermes_stock">GitHub 仓库</a>
+  </p>
+</body>
+</html>
