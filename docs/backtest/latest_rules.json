@@ -1,0 +1,27 @@
+{
+  "rules": {
+    "stop_loss_pct": -5,
+    "take_profit_pct": 30,
+    "max_position_pct": 25,
+    "min_position_shares": 500,
+    "min_position_shares_initial": 100,
+    "max_daily_loss": 4,
+    "trailing_stop": {
+      "enabled": true,
+      "activation_pct": 5,
+      "trail_pct": 3
+    },
+    "profit_management": {
+      "move_stop_to_breakeven_pct": 3,
+      "scale_out_at_pct": 15,
+      "scale_out_pct": 50
+    },
+    "data_acceleration": {
+      "enabled": true,
+      "target_trades_per_day": 2,
+      "min_holding_days": 3,
+      "max_holding_days": 10
+    }
+  },
+  "updated_at": "2026-06-01T23:10:00+08:00"
+}

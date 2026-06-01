@@ -1,0 +1,72 @@
+{
+  "total_trades": 0,
+  "win_rate": 0,
+  "avg_winner": 0,
+  "avg_loser": 0,
+  "profit_factor": 0,
+  "stop_loss_compliance": 100,
+  "baseline_win_rate": 60,
+  "daily_activity": {
+    "trades_opened": 1,
+    "trades_cancelled": 1,
+    "trades_closed": 0,
+    "positions_held": 1,
+    "daily_pnl_pct": 0.11,
+    "daily_pnl_amt": 1.0,
+    "max_drawdown_pct": 0,
+    "stop_loss_hits": 0,
+    "violations": [
+      {"type": "FOMO追高", "severity": "低", "detail": "亿纬锂能涨幅3.36%后追入，虽撤单但反映纪律性问题"},
+      {"type": "仓位管理", "severity": "低", "detail": "中国核电仅100股(918元)，占总资产47%，剩余资金闲置"}
+    ]
+  },
+  "current_positions": {
+    "601985": {
+      "name": "中国核电",
+      "entry_price": 9.17,
+      "current_price": 9.18,
+      "pnl_pct": 0.11,
+      "stop_loss": 8.71,
+      "take_profit": 11.92,
+      "days_held": 1,
+      "trailing_activated": false,
+      "grade": "hold"
+    }
+  },
+  "market_context": {
+    "date": "2026-06-01",
+    "shanghai_index": 4057.74,
+    "shanghai_chg_pct": -0.27,
+    "dominant_sectors": ["AI/数字媒体", "煤炭能源"],
+    "weak_sectors": ["科创板/半导体", "高估值成长"],
+    "market_style": "防御型价值占优",
+    "risk_level": "中等"
+  },
+  "evolution_log": [
+    {
+      "version": "v4.0",
+      "date": "2026-05-31",
+      "trigger": "用户手动策略调整：切换为短线盈利+利润奔跑模式",
+      "old_params": {
+        "stop_loss_pct": -8,
+        "take_profit_pct": 20,
+        "max_daily_loss": 5,
+        "trailing_stop": {"enabled": false}
+      },
+      "new_params": {
+        "stop_loss_pct": -5,
+        "take_profit_pct": 30,
+        "max_daily_loss": 4,
+        "trailing_stop": {"enabled": true, "activation_pct": 5, "trail_pct": 3},
+        "profit_management": {
+          "move_stop_to_breakeven_pct": 3,
+          "scale_out_at_pct": 15,
+          "scale_out_pct": 50
+        }
+      },
+      "backtest_improvement": "N/A（用户策略转向，非自进化触发）",
+      "status": "deployed"
+    }
+  ],
+  "updated_at": "2026-06-01T20:15:00+08:00"
+}

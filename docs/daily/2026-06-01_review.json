@@ -1,0 +1,127 @@
+{
+  "date": "2026-06-01",
+  "generated_at": "2026-06-01T19:18:00+08:00",
+  "market_summary": {
+    "shanghai_index": 4057.74,
+    "shanghai_chg_pct": -0.27,
+    "shenzhen_index": 15340.36,
+    "shenzhen_chg_pct": -1.51,
+    "chi_next_index": 3950.94,
+    "chi_next_chg_pct": -2.15,
+    "csi300_index": 4844.26,
+    "csi300_chg_pct": -0.98,
+    "star50_index": 1663.69,
+    "star50_chg_pct": -5.0
+  },
+  "portfolio_pnl": 0.11,
+  "benchmark_pnl": -0.27,
+  "portfolio_relative": 0.38,
+  "positions": [
+    {
+      "code": "601985",
+      "name": "中国核电",
+      "entry_price": 9.17,
+      "current_price": 9.18,
+      "pnl_pct": 0.11,
+      "pnl_amt": 1.0,
+      "quantity": 100,
+      "cost": 917.0,
+      "market_value": 918.0,
+      "high": 9.2,
+      "low": 8.98,
+      "prev_close": 9.04,
+      "grade": "hold",
+      "action": "hold",
+      "comment": "微盈+0.11%，基本平盘。今日随大盘低开后走高，盘中最高9.20元(+1.77%)。核电板块受电力需求预期支撑。当前价格在成本线上方运行，止损位8.71元(-5.0%)仍有效"
+    }
+  ],
+  "portfolio_summary": {
+    "total_cost": 917.0,
+    "total_value": 918.0,
+    "pnl_pct": 0.11,
+    "pnl_amt": 1.0,
+    "position_count": 1,
+    "available_cash": 1013.84,
+    "total_assets": 1931.84,
+    "daily_loss": 0.0
+  },
+  "cancelled_trades": [
+    {
+      "code": "300014",
+      "name": "亿纬锂能",
+      "entry_price": 65.82,
+      "status": "已撤",
+      "reason": "订单已撤，未成交。当前收盘64.99元(+2.06%)。若成交则盈利-1.26%",
+      "lesson": "FOMO追高冲动——该标的估值30倍偏高，突破时追入风险大。后续应等待回调确认后再入场"
+    }
+  ],
+  "sector_rankings": [
+    {"rank": 1, "sector": "图片媒体", "chg_pct": 10.01, "narrative": "AI生成+数字媒体爆发，多模态AI应用加速商业化"},
+    {"rank": 2, "sector": "文字媒体", "chg_pct": 7.37, "narrative": "AI文字内容生成赛道受关注，大模型落地带动"},
+    {"rank": 3, "sector": "肉鸡养殖", "chg_pct": 7.18, "narrative": "畜禽养殖周期反转预期，基本面改善"},
+    {"rank": 4, "sector": "动力煤/煤炭", "chg_pct": 6.78, "narrative": "夏季用电高峰预期，煤价上涨支撑"},
+    {"rank": 5, "sector": "电商服务", "chg_pct": 5.95, "narrative": "618电商大促临近，平台经济回暖"},
+    {"rank": 6, "sector": "横向通用软件", "chg_pct": 5.33, "narrative": "国产软件替代+AI赋能提效"},
+    {"rank": 7, "sector": "金融信息服务", "chg_pct": 4.47, "narrative": "证券IT+交易活跃度提升带动"},
+    {"rank": 8, "sector": "氟化工", "chg_pct": 4.28, "narrative": "新能源材料+制冷剂涨价周期"},
+    {"rank": 9, "sector": "燃气", "chg_pct": 4.10, "narrative": "公用事业防御性配置回暖"},
+    {"rank": 10, "sector": "煤炭开采", "chg_pct": 6.78, "narrative": "能源板块整体走强，夏季需求推动"}
+  ],
+  "sector_rotation_signals": [
+    {"direction": "走强", "sector": "AI/数字媒体", "evidence": "AI应用、华为欧拉(+5.79%)、ChatGPT概念(+3.92%)等概念集中爆发"},
+    {"direction": "走强", "sector": "煤炭能源", "evidence": "煤炭板块整体涨幅>6%，夏季用电高峰+煤价上涨预期"},
+    {"direction": "走弱", "sector": "科创板/半导体", "evidence": "科创50大跌-5.0%，半导体板块承压"},
+    {"direction": "走弱", "sector": "高估值成长股", "evidence": "创业板-2.15%，茅台-1.24%，宁德时代-0.92%"},
+    {"direction": "观察", "sector": "电力/核电", "evidence": "中国核电+1.55%走稳，电力需求长期增长逻辑未变"}
+  ],
+  "dragon_tiger_analysis": {
+    "top_gainers": [
+      {"code": "300103", "name": "达刚控股", "chg_pct": 20.05, "turnover": 4.72, "reason": "涨停"},
+      {"code": "300849", "name": "锦盛新材", "chg_pct": 20.02, "turnover": 6.42, "reason": "涨停"},
+      {"code": "301236", "name": "软通动力", "chg_pct": 20.01, "turnover": 4.83, "reason": "AI+华为概念涨停"},
+      {"code": "301329", "name": "信音电子", "chg_pct": 20.00, "turnover": 44.84, "reason": "高换手涨停"},
+      {"code": "300649", "name": "杭州园林", "chg_pct": 20.00, "turnover": 5.37, "reason": "涨停"}
+    ],
+    "key_observations": [
+      "创业板涨停潮：5只涨停（20%），集中在AI/数字媒体/新能源方向",
+      "多只股票低位放量涨停，但换手率参差不齐（4%到45%），持续性存疑",
+      "退市股继续大跌（-44%到-90%），ST板块风险仍高"
+    ],
+    "overlap_with_portfolio": "无重叠。持仓中国核电不在龙虎榜候选范围内"
+  },
+  "trade_audit": [
+    {"trade": "买入 中国核电 100@9.17", "result": "已成", "grade": "B", "comment": "执行合理，核电板块当前企稳。但仓位过小(0.09%)，对组合贡献有限"},
+    {"trade": "买入 亿纬锂能 100@65.82", "result": "已撤", "grade": "C", "comment": "追高冲动。虽然储能赛道逻辑正确，但价格已涨3.36%后追入性价比低。后续该标的回调至-1.26%后反弹"},
+    {"note": "亿纬锂能未成交反而避免了亏损，这是一个FOMO止损的教训"}
+  ],
+  "violations": [
+    {"type": "FOMO追高", "severity": "低", "detail": "亿纬锂能突破观察价后追入，虽然撤单但反映出纪律性问题"},
+    {"type": "仓位管理", "severity": "低", "detail": "中国核电仅100股(918元)，占总资产权重过低(47%)，剩余资金闲置"}
+  ],
+  "signals_for_next_day": {
+    "continue_watching": [
+      "AI概念能否延续强势（华为欧拉+5.79%、ChatGPT概念+3.92%）",
+      "煤炭板块夏季行情能否持续",
+      "中国核电9.20元压力位突破情况"
+    ],
+    "risk_points": [
+      "科创50暴跌-5%暗示高估值成长股承压",
+      "创业板-2.15%持续走弱",
+      "退市股大跌显示市场风险偏好分化"
+    ],
+    "strategy_actions": [
+      "持仓中国核电：继续持有，若跌破止损位8.71元严格执行止损",
+      "关注电力板块回调机会（核电、风电）",
+      "若中国核电涨幅达+3%（至9.45元），移动止损至成本价9.17元"
+    ]
+  },
+  "tomorrow_key_levels": {
+    "601985": {
+      "support": [8.98, 8.71],
+      "resistance": [9.20, 9.32],
+      "stop_loss": 8.71,
+      "comment": "今日低开8.98元后被拉起，9.20元是短期压力位"
+    }
+  },
+  "next_review": "2026-06-02T19:00:00+08:00"
+}
