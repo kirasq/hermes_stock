@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>晨间资讯分析报告 | Hermes 交易系统</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      line-height: 1.7;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+    h1, h2, h3 { margin-top: 32px; margin-bottom: 16px; font-weight: 600; line-height: 1.25; }
+    h1 { font-size: 32px; color: #58a6ff; border-bottom: 1px solid #21262d; padding-bottom: 10px; letter-spacing: -0.5px; }
+    h2 { font-size: 24px; color: #f0c674; }
+    h3 { font-size: 20px; color: #d2a8f3; }
+    h4 { font-size: 16px; color: #8b949e; text-transform: uppercase; letter-spacing: 1px; margin-top: 24px; }
+    p { margin: 12px 0; }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; color: #79c0ff; }
+    strong { color: #f0f6fc; }
+    em { color: #8b949e; }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 20px 0;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid #21262d;
+    }
+    th {
+      background: #1c2128;
+      color: #8b949e;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #1c2333; }
+    code {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: 'SF Mono', 'Monaco', 'Menlo', monospace;
+      font-size: 14px;
+      color: #ffa657;
+    }
+    pre {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+    pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      color: #79c0ff;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    blockquote {
+      border-left: 4px solid #30363d;
+      padding: 8px 16px;
+      margin: 16px 0;
+      background: #161b22;
+      border-radius: 0 6px 6px 0;
+      color: #8b949e;
+    }
+    ul, ol { margin: 12px 0; padding-left: 24px; }
+    li { margin: 6px 0; }
+    hr {
+      border: none;
+      border-top: 1px solid #21262d;
+      margin: 32px 0;
+    }
+    img { max-width: 100%; border-radius: 8px; margin: 16px 0; }
+    .header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #21262d;
+    }
+    .nav-links {
+      display: flex;
+      gap: 12px;
+    }
+    .nav-links a {
+      padding: 6px 14px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      color: #8b949e;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .nav-links a:hover {
+      background: #1c2333;
+      border-color: #58a6ff;
+      color: #58a6ff;
+      text-decoration: none;
+    }
+    .footer {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid #21262d;
+      text-align: center;
+      color: #484f58;
+      font-size: 12px;
+    }
+    .footer a { color: #484f58; }
+    .footer a:hover { color: #8b949e; }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .tag-profit { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
+    .tag-loss { background: rgba(248, 81, 73, 0.15); color: #f85149; }
+    .tag-info { background: rgba(88, 166, 255, 0.15); color: #58a6ff; }
+    .tag-warn { background: rgba(240, 198, 116, 0.15); color: #f0c674; }
+    @media (max-width: 640px) {
+      body { padding: 20px 12px; }
+      h1 { font-size: 24px; }
+      .header-bar { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-bar">
+    <div style="font-weight:600; color:#58a6ff; font-size:14px;">⚡ Hermes 自进化交易系统</div>
+    <div class="nav-links">
+      <a href="/hermes_stock/">🏠 首页</a>
+      <a href="/hermes_stock/daily/">📅 每日报告</a>
+      <a href="/hermes_stock/backtest/">📊 回测</a>
+      <a href="/hermes_stock/strategy/">🧬 策略</a>
+    </div>
+  </div>
+  
+  <h1>晨间资讯分析报告</h1>
+<p><strong>日期：</strong> 2026-06-02（周二） | <strong>生成时间：</strong> 2026-06-01 23:06 CST</p>
+<p><strong>盘前情绪：</strong> ⚖️ 中性偏空（结构性分化明显，科创50大跌5%）</p>
+<br>
+<hr>
+<br>
+<h2>一、前一交易日收盘（2026-06-01）</h2>
+<br>
+<table>
+  <thead><tr>
+    <th>指数</th>
+    <th>收盘价</th>
+    <th>涨跌幅</th>
+    <th>信号</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>上证指数</td>
+    <td>4,057.74</td>
+    <td>▼ -0.27%</td>
+    <td>抗跌</td>
+  </tr>
+  <tr>
+    <td>深证成指</td>
+    <td>15,340.36</td>
+    <td>▼ -1.51%</td>
+    <td>偏弱</td>
+  </tr>
+  <tr>
+    <td>创业板指</td>
+    <td>3,950.94</td>
+    <td>▼ -2.15%</td>
+    <td>弱势</td>
+  </tr>
+  <tr>
+    <td>科创50</td>
+    <td>1,663.69</td>
+    <td>▼ **-5.00%**</td>
+    <td>⚠️ 大跌</td>
+  </tr>
+<br>
+  </tbody>
+</table>
+<p>> <strong>核心判断：</strong> 主板相对抗跌，但科创50暴跌5%显示AI/半导体板块短期过热回调压力。市场呈现"指数弱、个股热"的结构性特征——全市场超3700只个股上涨，166只涨停，但指数却下跌。</p>
+<br>
+<hr>
+<br>
+<h2>二、重大新闻事件</h2>
+<br>
+<h3>📈 核心利好</h3>
+<br>
+<h4>1. 人形机器人爆发（最热主线）</h4>
+<ul>
+  <li>**英伟达GTC Taipei持续至6月5日**：黄仁勋宣布联手宇树、Sharpa打造Isaac GR00T参考人形机器人，搭载触觉五指手</li>
+  <li>**宇树科技科创板IPO过会**（6月1日），70余天闪电过会，拟募资42.02亿元，成A股"人形机器人第一股"</li>
+  <li>**广东省"机器人+"行动**：深圳研发中试+佛山制造量产，产业化闭环形成</li>
+  <li>**高盛研报**：AI投资叙事从基础设施层向应用层切换，人形机器人最具货币化前景</li>
+</ul>
+<br>
+<h4>2. AI算力持续高景气</h4>
+<ul>
+  <li>**东阳光签100-120亿算力大单**，高性能算力服务器租赁业务</li>
+  <li>**Computex 2026开幕**（6月1-5日）：AI Together主题，算力从芯片向机柜与系统建设演进</li>
+  <li>**首款搭载英伟达芯片Windows电脑即将亮相**，联想、戴尔等厂商第一时间推出新品</li>
+  <li>**光模块/PCB/液冷/燃气轮机**：AI数据中心核心配套设备需求爆发</li>
+</ul>
+<br>
+<h4>3. 地缘缓和利好</h4>
+<ul>
+  <li>美伊延长60天停火期，霍尔木兹海峡航运恢复预期推动油价下行</li>
+  <li>布伦特原油降至$92.05/桶，5月累计下跌约17%，能源通胀压力缓解</li>
+  <li>10年期美债收益率降至4.44%，市场情绪回暖</li>
+</ul>
+<br>
+<h4>4. 宏观环境</h4>
+<ul>
+  <li>**美联储6月维持利率不变概率99.3%**（CME FedWatch）</li>
+  <li>国内1-4月制造业销售收入同比+6.9%，计算机通信、电气机械两位数增长</li>
+  <li>102项国家标准今起实施，含动力蓄电池缺陷监测等重要标准</li>
+</ul>
+<br>
+<h3>⚠️ 风险信号</h3>
+<br>
+<h4>1. 科创50大跌5%</h4>
+<ul>
+  <li>半导体/AI板块短期超买后获利回吐</li>
+  <li>宁德时代、阳光电源等创业板权重股承压</li>
+  <li>创业板跌2.15%，科技板块整体回调</li>
+</ul>
+<br>
+<h4>2. 美联储新主席沃什首秀在即</h4>
+<ul>
+  <li>**6月17日FOMC会议**，沃什首次主持，市场预期偏鹰</li>
+  <li>美国4月PCE同比3.8%（创近三年新高），核心PCE 3.3%</li>
+  <li>12月加息概率升至50%+，市场定价鹰派路径</li>
+</ul>
+<br>
+<h4>3. 6月季末流动性趋紧</h4>
+<ul>
+  <li>银行半年度考核时点，资金面季节性紧张</li>
+  <li>7月半年报预告将发布，机构持仓向业绩确定性标的集中</li>
+</ul>
+<br>
+<hr>
+<br>
+<h2>三、板块热点</h2>
+<br>
+<h3>行业板块涨跌幅前5（6月1日）</h3>
+<br>
+<table>
+  <thead><tr>
+    <th>排名</th>
+    <th>板块</th>
+    <th>涨幅</th>
+    <th>备注</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>1</td>
+    <td>煤炭开采</td>
+    <td>▲ +6.78%</td>
+    <td>夏季用电+能源安全</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>电力</td>
+    <td>▲ 活跃</td>
+    <td>AI算力电力需求增长</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>图片媒体</td>
+    <td>▲ +10.01%</td>
+    <td>AI生成内容爆发</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>文字媒体</td>
+    <td>▲ +7.37%</td>
+    <td>AI写作/内容工具</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>燃气</td>
+    <td>▲ 异动</td>
+    <td>能源安全主题</td>
+  </tr>
+<br>
+<h3>概念板块涨跌幅前5（6月1日）</h3>
+<br>
+  <tr>
+    <td>排名</td>
+    <td>概念</td>
+    <td>涨幅</td>
+    <td>备注</td>
+  </tr>
+  <tr>
+    <td>------</td>
+    <td>------</td>
+    <td>------</td>
+    <td>------</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>华为欧拉</td>
+    <td>▲ +5.79%</td>
+    <td>国产操作系统</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>财税数字化</td>
+    <td>▲ +5.01%</td>
+    <td>政策驱动</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>MLOps概念</td>
+    <td>▲ +4.29%</td>
+    <td>AI模型运维</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>虚拟机器人</td>
+    <td>▲ +4.27%</td>
+    <td>机器人情绪扩散</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Kimi概念</td>
+    <td>▲ +4.25%</td>
+    <td>AI应用端</td>
+  </tr>
+<br>
+<h3>龙虎榜明星个股（6月1日）</h3>
+<br>
+  <tr>
+    <td>个股</td>
+    <td>涨幅</td>
+    <td>概念</td>
+  </tr>
+  <tr>
+    <td>------</td>
+    <td>------</td>
+    <td>------</td>
+  </tr>
+  <tr>
+    <td>信音电子(301329)</td>
+    <td>+20.00%</td>
+    <td>电子元器件+AI算力</td>
+  </tr>
+  <tr>
+    <td>软通动力(301236)</td>
+    <td>+20.01%</td>
+    <td>AI算力/华为</td>
+  </tr>
+  <tr>
+    <td>达刚控股(300103)</td>
+    <td>+20.05%</td>
+    <td>机器人/机械</td>
+  </tr>
+  <tr>
+    <td>锦盛新材(300849)</td>
+    <td>+20.02%</td>
+    <td>新材料</td>
+  </tr>
+<br>
+<hr>
+<br>
+<h2>四、持仓与风控</h2>
+<br>
+<h3>当前持仓</h3>
+<br>
+  <tr>
+    <td>代码</td>
+    <td>名称</td>
+    <td>持仓</td>
+    <td>成本</td>
+    <td>当前价</td>
+    <td>盈亏</td>
+  </tr>
+  <tr>
+    <td>------</td>
+    <td>------</td>
+    <td>------</td>
+    <td>------</td>
+    <td>--------</td>
+  </tr>
+  <tr>
+    <td>601985</td>
+    <td>中国核电</td>
+    <td>100股</td>
+    <td>9.17</td>
+    <td>9.18</td>
+    <td>+0.11%</td>
+  </tr>
+<br>
+  </tbody>
+</table>
+<p>> ⚠️ <strong>仓位管理提醒</strong>：当前持仓100股，远低于 <code>rules.json</code> 中 <code>min_position_shares=500</code> 要求。盘中 trader-tactical 将评估加仓至500股的机会。</p>
+<br>
+<h3>风控参数</h3>
+<ul>
+  <li>止损线：**-5%**（当前止损位：8.71）</li>
+  <li>移动止损：盈利达5%激活，回撤3%触发</li>
+  <li>分批止盈：盈利达15%卖50%，达30%清仓</li>
+  <li>最大单日亏损：4%</li>
+  <li>**最小买入数量：500股**（必须遵守）</li>
+</ul>
+<br>
+<hr>
+<br>
+<h2>五、今日选股池（6月2日交易参考）</h2>
+<br>
+<h3>🔴 重点关注（优先买入候选）</h3>
+<br>
+<table>
+  <thead><tr>
+    <th>代码</th>
+    <th>名称</th>
+    <th>板块</th>
+    <th>逻辑</th>
+    <th>建议买入区间</th>
+    <th>止损位</th>
+    <th>目标价</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>**601985**</td>
+    <td>**中国核电**</td>
+    <td>公用事业-电力</td>
+    <td>现有持仓，AI电力需求+高股息2.08%，防御属性突出</td>
+    <td>9.10-9.30</td>
+    <td>8.71</td>
+    <td>10.50</td>
+  </tr>
+  <tr>
+    <td>**300124**</td>
+    <td>**汇川技术**</td>
+    <td>电力设备-工控</td>
+    <td>机器人伺服系统龙头，宇树IPO直接受益，PE~35估值合理</td>
+    <td>65.00-68.00</td>
+    <td>62.00</td>
+    <td>75.00</td>
+  </tr>
+  <tr>
+    <td>**300750**</td>
+    <td>**宁德时代**</td>
+    <td>电力设备-电池</td>
+    <td>锂电龙头+储能+高股息，PE~24.84，券商6月金股</td>
+    <td>245.00-255.00</td>
+    <td>235.00</td>
+    <td>280.00</td>
+  </tr>
+  <tr>
+    <td>**600183**</td>
+    <td>**生益科技**</td>
+    <td>电子-PCB</td>
+    <td>PCB覆铜板龙头，AI服务器+光模块配套，Computex主题</td>
+    <td>22.00-24.00</td>
+    <td>21.00</td>
+    <td>28.00</td>
+  </tr>
+<br>
+<h3>🟡 跟踪观察</h3>
+<br>
+  <tr>
+    <td>代码</td>
+    <td>名称</td>
+    <td>板块</td>
+    <td>逻辑</td>
+    <td>建议买入区间</td>
+    <td>止损位</td>
+  </tr>
+  <tr>
+    <td>------</td>
+    <td>------</td>
+    <td>------</td>
+    <td>------</td>
+    <td>------------</td>
+    <td>--------</td>
+  </tr>
+  <tr>
+    <td>601012</td>
+    <td>隆基绿能</td>
+    <td>电力设备-光伏</td>
+    <td>光伏龙头+储能，估值历史低位，超跌反弹</td>
+    <td>16.50-17.50</td>
+    <td>15.80</td>
+  </tr>
+  <tr>
+    <td>600900</td>
+    <td>长江电力</td>
+    <td>公用事业-电力</td>
+    <td>高股息防御（4%+），AI+电力双受益</td>
+    <td>27.50-28.50</td>
+    <td>26.50</td>
+  </tr>
+  <tr>
+    <td>002415</td>
+    <td>海康威视</td>
+    <td>计算机-安防AI</td>
+    <td>AI视觉龙头，机器人感知供应商，PE~20</td>
+    <td>32.00-34.00</td>
+    <td>30.50</td>
+  </tr>
+  <tr>
+    <td>688169</td>
+    <td>石头科技</td>
+    <td>家用电器-服务机器人</td>
+    <td>扫地机器人+AI，机器人板块情绪联动</td>
+    <td>210.00-225.00</td>
+    <td>200.00</td>
+  </tr>
+<br>
+<h3>🟢 持有（现有持仓）</h3>
+<br>
+  <tr>
+    <td>代码</td>
+    <td>名称</td>
+    <td>操作策略</td>
+  </tr>
+  <tr>
+    <td>------</td>
+    <td>------</td>
+    <td>----------</td>
+  </tr>
+  <tr>
+    <td>**601985**</td>
+    <td>**中国核电**</td>
+    <td>**持有不动，关注能否加仓至500股（min_position_shares要求）**</td>
+  </tr>
+<br>
+<h3>备选池</h3>
+<br>
+  <tr>
+    <td>代码</td>
+    <td>名称</td>
+    <td>逻辑</td>
+  </tr>
+  <tr>
+    <td>------</td>
+    <td>------</td>
+    <td>------</td>
+  </tr>
+  <tr>
+    <td>002138</td>
+    <td>顺络电子</td>
+    <td>被动元件龙头，AI终端放量受益，PE~42</td>
+  </tr>
+  <tr>
+    <td>688525</td>
+    <td>佰维存储</td>
+    <td>存储芯片龙头，AI需求增长，PE~39</td>
+  </tr>
+  <tr>
+    <td>600549</td>
+    <td>厦门钨业</td>
+    <td>稀土永磁+固态电池材料，涨价周期受益</td>
+  </tr>
+<br>
+<hr>
+<br>
+<h2>六、交易行动计划</h2>
+<br>
+<h3>开盘前（08:30-09:15）</h3>
+  </tbody>
+</table>
+<ul>
+  <li>[x] 新闻采集完成（23:06完成）</li>
+  <li>[x] 情绪分析完成（中性偏空）</li>
+  <li>[x] 选股池构建完成（9只重点关注+备选）</li>
+  <li>[ ] 开盘前确认美期指和富时A50走势</li>
+</ul>
+<br>
+<h3>盘中关注（09:30-15:00）</h3>
+<ul>
+  <li>**人形机器人板块**：宇树IPO利好是否兑现（高开低走？），关注汇川技术、拓普集团</li>
+  <li>**AI算力**：Computex 2026黄仁勋演讲影响，光模块/PCB个股（生益科技）</li>
+  <li>**科创50**：能否止跌企稳，关注寒武纪、中芯国际</li>
+  <li>**电力板块**：中国核电能否维持强势，夏季用电高峰主题</li>
+  <li>**跌停/涨停板**：信音电子（电子元器件+20%）、软通动力（AI算力+20%）的持续性</li>
+</ul>
+<br>
+<h3>现有持仓策略</h3>
+<table>
+  <thead><tr>
+    <th>代码</th>
+    <th>条件</th>
+    <th>动作</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>601985</td>
+    <td>盈利达+5%（约9.63）</td>
+    <td>激活移动止损（回撤3%卖出）</td>
+  </tr>
+  <tr>
+    <td>601985</td>
+    <td>跌破止损位8.71</td>
+    <td>市价卖出清仓</td>
+  </tr>
+  <tr>
+    <td>601985</td>
+    <td>盈利达+15%（约10.55）</td>
+    <td>卖50%仓位</td>
+  </tr>
+  <tr>
+    <td>601985</td>
+    <td>**开盘后量能充足**</td>
+    <td>**加仓至500股（满足min_position_shares）**</td>
+  </tr>
+<br>
+<hr>
+<br>
+<h2>七、风险提示</h2>
+<br>
+  </tbody>
+</table>
+<ol>
+  <li>**美联储鹰派风险（6月17日）**：沃什首次FOMC会议，可能释放鹰派信号</li>
+  <li>**人形机器人"利好兑现"**：宇树IPO过会已经部分定价，警惕高开低走</li>
+  <li>**科创50流动性风险**：一日暴跌5%可能引发量化基金止损连锁反应</li>
+  <li>**季末资金面**：6月末流动性季节性收紧，影响中小盘股</li>
+  <li>**美伊地缘反复**：停火协议脆弱，随时可能再起冲突</li>
+  <li>**仓位管理**：当前仅持有100股中国核电，严重低于500股要求，需尽快加仓</li>
+</ol>
+<br>
+<hr>
+<br>
+<h2>八、数据源说明</h2>
+<br>
+<ul>
+  <li>**东方财富妙想搜索**：宏观政策、AI算力、人形机器人、新能源板块新闻</li>
+  <li>**东方财富API**：行业板块排名、概念板块排名、涨幅榜</li>
+  <li>**东方财富妙想选股**：储能+固态电池PE<40股价<100</li>
+  <li>**现有持仓**：positions.json（中国核电100股，成本9.17）</li>
+  <li>**风控参数**：rules.json（止损-5%，止盈30%，最大仓位25%，min_position_shares=500）</li>
+</ul>
+<br>
+<hr>
+<br>
+<p><em>报告生成：trader-news 晨间资讯分析师 | 2026-06-01 23:06 CST</em></p>
+<br>
+
+  
+  <div class="footer">
+    由 Hermes 自进化交易系统自动生成 · <a href="https://github.com/kirasq/hermes_stock">GitHub 仓库</a><br>
+    更新时间：2026-06-02 20:15:04 · ⚠️ 所有交易均为模拟盘
+  </div>
+</body>
+</html>

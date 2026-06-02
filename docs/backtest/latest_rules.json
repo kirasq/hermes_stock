@@ -1,27 +1,66 @@
 {
+  "meta": {
+    "version": "3.0",
+    "name": "道法自然综合交易策略",
+    "updated_at": "2026-06-02T00:30:00+08:00",
+    "regime": "温和牛市"
+  },
   "rules": {
-    "stop_loss_pct": -5,
-    "take_profit_pct": 30,
-    "max_position_pct": 25,
-    "min_position_shares": 500,
-    "min_position_shares_initial": 100,
-    "max_daily_loss": 4,
-    "trailing_stop": {
-      "enabled": true,
-      "activation_pct": 5,
-      "trail_pct": 3
+    "stop_loss": {
+      "hard_stop_pct": -5,
+      "time_stop_days": 5,
+      "volatility_stop_atr": 2.0,
+      "max_daily_loss_pct": -4,
+      "max_weekly_loss_pct": -8
     },
     "profit_management": {
+      "take_profit_pct": 30,
+      "trailing_stop": {
+        "enabled": true,
+        "activation_pct": 5,
+        "trail_pct": 3
+      },
       "move_stop_to_breakeven_pct": 3,
-      "scale_out_at_pct": 15,
-      "scale_out_pct": 50
+      "scale_out": {
+        "enabled": true,
+        "first_target_pct": 12,
+        "first_target_ratio": 0.4,
+        "second_target_pct": 25,
+        "second_target_ratio": 0.3,
+        "run_to_end": 0.3
+      },
+      "pyramid": {
+        "enabled": true,
+        "add_on_profit_pct": 10,
+        "add_ratio": 0.5,
+        "max_adds": 2
+      }
+    },
+    "position_sizing": {
+      "min_shares": 500,
+      "min_shares_initial": 100,
+      "max_position_pct": 25,
+      "kelly_fraction": 0.25,
+      "volatility_adjust": true,
+      "max_concurrent_positions": 3
+    },
+    "short_term": {
+      "min_holding_days": 2,
+      "max_holding_days": 10,
+      "day_trade_profit_target_pct": 3,
+      "breakout_volume_multiplier": 1.5
     },
     "data_acceleration": {
       "enabled": true,
       "target_trades_per_day": 2,
-      "min_holding_days": 3,
-      "max_holding_days": 10
+      "max_daily_stock_picks": 3
+    },
+    "dao_philosophy": {
+      "shun_shi_er_wei": true,
+      "wu_wei_er_zhi": true,
+      "shui_zhi_dao": "上善若水,水善利万物而不争",
+      "wu_ji_bi_fan": true,
+      "soft_over_hard": true
     }
-  },
-  "updated_at": "2026-06-01T23:10:00+08:00"
+  }
 }
