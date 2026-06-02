@@ -1,46 +1,67 @@
 {
-  "total_trades": 0,
-  "win_rate": 0,
-  "avg_winner": 0,
+  "total_trades": 2,
+  "win_rate": 100.0,
+  "avg_winner": 2.84,
   "avg_loser": 0,
-  "profit_factor": 0,
+  "profit_factor": 999.0,
   "stop_loss_compliance": 100,
-  "baseline_win_rate": 60,
+  "basline_win_rate": 60,
   "daily_activity": {
-    "trades_opened": 1,
+    "trades_opened": 2,
     "trades_cancelled": 1,
     "trades_closed": 0,
-    "positions_held": 1,
-    "daily_pnl_pct": 0.11,
-    "daily_pnl_amt": 1.0,
+    "positions_held": 2,
+    "daily_pnl_pct": 2.84,
+    "daily_pnl_amt": 28.4,
     "max_drawdown_pct": 0,
     "stop_loss_hits": 0,
     "violations": [
-      {"type": "FOMO追高", "severity": "低", "detail": "亿纬锂能涨幅3.36%后追入，虽撤单但反映纪律性问题"},
-      {"type": "仓位管理", "severity": "低", "detail": "中国核电仅100股(918元)，占总资产47%，剩余资金闲置"}
+      {
+        "type": "仓位管理",
+        "severity": "中",
+        "detail": "持仓仅200股(中国核电100+软通动力100)，占总资产47%，剩余资金闲置，未达min_shares=500的设定"
+      },
+      {
+        "type": "FOMO追高",
+        "severity": "低",
+        "detail": "亿纬锂能昨日涨幅3.36%后追入虽撤单，但反映纪律性问题"
+      }
     ]
   },
   "current_positions": {
     "601985": {
       "name": "中国核电",
       "entry_price": 9.17,
-      "current_price": 9.18,
-      "pnl_pct": 0.11,
-      "stop_loss": 8.71,
+      "current_price": 9.29,
+      "pnl_pct": 1.31,
+      "stop_loss": 9.17,
       "take_profit": 11.92,
       "days_held": 1,
       "trailing_activated": false,
       "grade": "hold"
+    },
+    "301236": {
+      "name": "软通动力",
+      "entry_price": 41.06,
+      "current_price": 42.85,
+      "pnl_pct": 4.36,
+      "stop_loss": 41.06,
+      "take_profit": 53.38,
+      "days_held": 0,
+      "trailing_activated": true,
+      "highest_price": 43.91,
+      "trail_stop_price": 42.59,
+      "grade": "star"
     }
   },
   "market_context": {
-    "date": "2026-06-01",
-    "shanghai_index": 4057.74,
-    "shanghai_chg_pct": -0.27,
-    "dominant_sectors": ["AI/数字媒体", "煤炭能源"],
-    "weak_sectors": ["科创板/半导体", "高估值成长"],
-    "market_style": "防御型价值占优",
-    "risk_level": "中等"
+    "date": "2026-06-02",
+    "shanghai_index": 4060.0,
+    "shanghai_chg_pct": 0.5,
+    "dominant_sectors": ["信创/软件", "AI/算力", "电力/核电"],
+    "weak_sectors": ["储能/锂电池", "高估值成长"],
+    "market_style": "成长与价值轮动，信创板块强势",
+    "risk_level": "中低"
   },
   "evolution_log": [
     {
@@ -68,5 +89,5 @@
       "status": "deployed"
     }
   ],
-  "updated_at": "2026-06-01T20:15:00+08:00"
+  "updated_at": "2026-06-02T22:55:00+08:00"
 }
