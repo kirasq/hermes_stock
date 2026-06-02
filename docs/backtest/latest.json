@@ -11,7 +11,7 @@
     "trades_cancelled": 1,
     "trades_closed": 0,
     "positions_held": 2,
-    "daily_pnl_pct": 2.84,
+    "daily_pnl_pct": 2.83,
     "daily_pnl_amt": 28.4,
     "max_drawdown_pct": 0,
     "stop_loss_hits": 0,
@@ -58,8 +58,15 @@
     "date": "2026-06-02",
     "shanghai_index": 4060.0,
     "shanghai_chg_pct": 0.5,
-    "dominant_sectors": ["信创/软件", "AI/算力", "电力/核电"],
-    "weak_sectors": ["储能/锂电池", "高估值成长"],
+    "dominant_sectors": [
+      "信创/软件",
+      "AI/算力",
+      "电力/核电"
+    ],
+    "weak_sectors": [
+      "储能/锂电池",
+      "高估值成长"
+    ],
     "market_style": "成长与价值轮动，信创板块强势",
     "risk_level": "中低"
   },
@@ -72,13 +79,19 @@
         "stop_loss_pct": -8,
         "take_profit_pct": 20,
         "max_daily_loss": 5,
-        "trailing_stop": {"enabled": false}
+        "trailing_stop": {
+          "enabled": false
+        }
       },
       "new_params": {
         "stop_loss_pct": -5,
         "take_profit_pct": 30,
         "max_daily_loss": 4,
-        "trailing_stop": {"enabled": true, "activation_pct": 5, "trail_pct": 3},
+        "trailing_stop": {
+          "enabled": true,
+          "activation_pct": 5,
+          "trail_pct": 3
+        },
         "profit_management": {
           "move_stop_to_breakeven_pct": 3,
           "scale_out_at_pct": 15,
@@ -89,5 +102,6 @@
       "status": "deployed"
     }
   ],
-  "updated_at": "2026-06-02T22:55:00+08:00"
+  "updated_at": "2026-06-02T23:02:16.940764",
+  "last_review": "2026-06-02"
 }

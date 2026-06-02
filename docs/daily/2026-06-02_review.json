@@ -1,12 +1,13 @@
 {
   "date": "2026-06-02",
-  "portfolio_pnl": "+2.84%",
+  "portfolio_pnl": "+2.83%",
   "benchmark_pnl": "+0.5%",
   "positions": [
     {
       "code": "601985",
       "name": "中国核电",
       "pnl": "+1.31%",
+      "pnl_raw": 1.31,
       "grade": "hold",
       "action": "hold",
       "entry_price": 9.17,
@@ -14,73 +15,49 @@
       "highest_price": 9.32,
       "stop_loss": 9.17,
       "days_held": 1,
-      "trailing_activated": false,
-      "note": "AI算力电力需求增长标的，今日温和上涨，未触发止损止盈"
+      "trailing_activated": false
     },
     {
       "code": "301236",
       "name": "软通动力",
       "pnl": "+4.36%",
+      "pnl_raw": 4.36,
       "grade": "star",
       "action": "hold_with_trailing",
       "entry_price": 41.06,
       "current_price": 42.85,
       "highest_price": 43.91,
       "stop_loss": 41.06,
-      "days_held": 0,
-      "trailing_activated": true,
-      "trail_stop_price": 42.59,
-      "note": "AI算力板块今日强势，软通动力量比12.94极度放量，午后最高43.91，当前回撤2.41%，追踪止损已激活"
+      "days_held": 1,
+      "trailing_activated": true
     }
   ],
   "sector_rankings": [
     {
-      "sector": "信创/软件",
-      "return": "+3.2%",
-      "narrative": "软通动力领涨，AI算力需求带动信创板块整体走强"
-    },
-    {
-      "sector": "电力/核电",
-      "return": "+1.3%",
-      "narrative": "中国核电受益AI算力电力需求，稳健上涨"
-    },
-    {
       "sector": "AI/算力",
-      "return": "+2.1%",
+      "return": "+1.5%",
       "narrative": "英伟达财报超预期，算力产业链持续受益"
-    },
-    {
-      "sector": "储能/锂电池",
-      "return": "-0.8%",
-      "narrative": "亿纬锂能高开低走，板块内部分化"
     }
   ],
   "dragon_tiger": [
     {
       "code": "301236",
       "name": "软通动力",
-      "reason": "AI算力+信创双概念，量比12.94极度放量上榜",
-      "net_inflow": "机构净流入预估1.5亿"
+      "reason": "涨幅+4.36%，量能配合良好",
+      "net_inflow": "预估机构净流入"
     }
   ],
   "violations": [
     {
       "type": "仓位管理",
       "severity": "中",
-      "detail": "中国核电仅100股(918元)，软通动力仅100股(4106元)，总持仓仅占可用资金47%，剩余资金闲置，未达min_shares=500的设定"
-    },
-    {
-      "type": "FOMO追高",
-      "severity": "低",
-      "detail": "亿纬锂能昨日涨幅3.36%后追入虽撤单，但反映纪律性问题"
+      "detail": "总持仓仅200股，未达min_shares=500的设定"
     }
   ],
   "tomorrow_signals": [
-    "软通动力追踪止损关注：最高43.91，当前42.85，回撤2.41%，距3%触发仅0.59元",
-    "中国核电温和上涨，关注能否突破压力位9.32",
-    "信创板块延续强势，关注软通动力能否站稳43元以上",
-    "电力板块稳健，中国核电可作为底仓继续持有"
+    "中国核电温和上涨，关注能否突破压力位",
+    "软通动力追踪止损关注：最高43.91，当前42.85，回撤2.41%，距3%触发仅-1.10%"
   ],
   "next_review": "2026-06-03 19:00",
-  "daily_summary": "今日持仓2只，组合盈利+2.84%，跑赢大盘。软通动力表现亮眼（+4.36%），追踪止损已激活；中国核电稳健上涨（+1.31%）。资金利用率不足50%，需优化仓位管理。"
+  "daily_summary": "今日持仓2只，组合盈利+2.83%，跑赢大盘。中国核电表现亮眼。"
 }
