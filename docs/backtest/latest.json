@@ -1,20 +1,20 @@
 {
-  "total_trades": 2,
-  "win_rate": 100.0,
-  "avg_winner": 2.84,
-  "avg_loser": 0,
-  "profit_factor": 999.0,
-  "stop_loss_compliance": 100,
+  "total_trades": 1,
+  "win_rate": 0.0,
+  "avg_winner": 0,
+  "avg_loser": -0.27,
+  "profit_factor": 0.0,
+  "stop_loss_compliance": 100.0,
   "basline_win_rate": 60,
   "daily_activity": {
     "trades_opened": 2,
     "trades_cancelled": 1,
-    "trades_closed": 0,
+    "trades_closed": 1,
     "positions_held": 1,
     "daily_pnl_pct": 1.09,
     "daily_pnl_amt": 28.4,
     "max_drawdown_pct": 0,
-    "stop_loss_hits": 0,
+    "stop_loss_hits": 1,
     "violations": [
       {
         "type": "仓位管理",
@@ -32,26 +32,15 @@
     "601985": {
       "name": "中国核电",
       "entry_price": 9.17,
-      "current_price": 9.29,
-      "pnl_pct": 1.31,
+      "quantity": 100,
+      "current_price": 9.27,
+      "pnl_pct": 1.09,
       "stop_loss": 9.17,
-      "take_profit": 11.92,
       "days_held": 1,
-      "trailing_activated": false,
-      "grade": "hold"
-    },
-    "301236": {
-      "name": "软通动力",
-      "entry_price": 41.06,
-      "current_price": 42.85,
-      "pnl_pct": 4.36,
-      "stop_loss": 41.06,
-      "take_profit": 53.38,
-      "days_held": 0,
-      "trailing_activated": true,
-      "highest_price": 43.91,
-      "trail_stop_price": 42.59,
-      "grade": "star"
+      "grade": "hold",
+      "action": "hold",
+      "highest_price": 9.32,
+      "trailing_activated": false
     }
   },
   "market_context": {
@@ -102,6 +91,6 @@
       "status": "deployed"
     }
   ],
-  "updated_at": "2026-06-03T09:22:36.884993",
+  "updated_at": "2026-06-03T20:01:10.437929",
   "last_review": "2026-06-03"
 }
