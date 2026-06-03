@@ -1,0 +1,41 @@
+{
+  "date": "2026-06-03",
+  "portfolio_pnl": "+1.09%",
+  "benchmark_pnl": "+0.5%",
+  "positions": [
+    {
+      "code": "601985",
+      "name": "中国核电",
+      "pnl": "+1.09%",
+      "pnl_raw": 1.09,
+      "grade": "hold",
+      "action": "hold",
+      "entry_price": 9.17,
+      "current_price": 9.27,
+      "highest_price": 9.32,
+      "stop_loss": 9.17,
+      "days_held": 1,
+      "trailing_activated": false
+    }
+  ],
+  "sector_rankings": [
+    {
+      "sector": "AI/算力",
+      "return": "+1.5%",
+      "narrative": "英伟达财报超预期，算力产业链持续受益"
+    }
+  ],
+  "dragon_tiger": [],
+  "violations": [
+    {
+      "type": "仓位管理",
+      "severity": "中",
+      "detail": "总持仓仅100股，未达min_shares=500的设定"
+    }
+  ],
+  "tomorrow_signals": [
+    "中国核电温和上涨，关注能否突破压力位"
+  ],
+  "next_review": "2026-06-04 19:00",
+  "daily_summary": "今日持仓1只，组合盈利+1.09%，跑赢大盘。中国核电表现稳健。"
+}

@@ -10,8 +10,8 @@
     "trades_opened": 2,
     "trades_cancelled": 1,
     "trades_closed": 0,
-    "positions_held": 2,
-    "daily_pnl_pct": 2.83,
+    "positions_held": 1,
+    "daily_pnl_pct": 1.09,
     "daily_pnl_amt": 28.4,
     "max_drawdown_pct": 0,
     "stop_loss_hits": 0,
@@ -102,6 +102,6 @@
       "status": "deployed"
     }
   ],
-  "updated_at": "2026-06-02T23:04:57.180650",
-  "last_review": "2026-06-02"
+  "updated_at": "2026-06-03T09:22:36.884993",
+  "last_review": "2026-06-03"
 }
