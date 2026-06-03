@@ -239,6 +239,9 @@ def simple_md_to_html(md_text):
         
         # 空行
         if not line.strip():
+            if in_table:
+                html.append('  </tbody>\n</table>\n')
+                in_table = False
             if in_list:
                 html.append(f'</{"ol" if list_type == "ordered" else "ul"}>\n')
                 in_list = False
@@ -249,6 +252,13 @@ def simple_md_to_html(md_text):
         
         # 水平线
         if re.match(r'^---+$', line.strip()):
+            if in_table:
+                html.append('  </tbody>\n</table>\n')
+                in_table = False
+            if in_list:
+                html.append(f'</{"ol" if list_type == "ordered" else "ul"}>\n')
+                in_list = False
+                list_type = None
             html.append('<hr>\n')
             i += 1
             continue
@@ -256,6 +266,9 @@ def simple_md_to_html(md_text):
         # 标题
         h_match = re.match(r'^(#{1,4})\s+(.+)$', line)
         if h_match:
+            if in_table:
+                html.append('  </tbody>\n</table>\n')
+                in_table = False
             level = len(h_match.group(1))
             text = h_match.group(2)
             html.append(f'<h{level}>{text}</h{level}>\n')

@@ -49,34 +49,145 @@ def git_commit_push(commit_msg):
         return False
 
 
+def generate_daily_index(daily_dir):
+    """重新生成 docs/daily/index.html（静态文件列表，不依赖 JS 抓取目录）"""
+    # 扫描所有文件（排除 index.html/index.md）
+    files = []
+    for f in sorted(daily_dir.iterdir(), reverse=True):
+        if f.name in ("index.html", "index.md") or f.is_dir():
+            continue
+        files.append(f.name)
+    
+    # 按日期分组
+    from collections import defaultdict
+    by_date = defaultdict(list)
+    for name in files:
+        # 提取日期：2026-06-03_summary.html -> 2026-06-03
+        parts = name.split("_")
+        if len(parts) >= 1:
+            date_candidate = parts[0]
+        else:
+            date_candidate = ""
+        by_date[date_candidate].append(name)
+    
+    # 日期排序（最新的在前）
+    sorted_dates = sorted(by_date.keys(), reverse=True)
+    
+    def badge_html(name):
+        ext = name.split(".")[-1].lower()
+        cls = {"json": "badge-json", "md": "badge-md", "html": "badge-html"}.get(ext, "badge-md")
+        return f'<span class="badge {cls}">{ext.upper()}</span>'
+    
+    def desc_html(name):
+        ext = name.split(".")[-1].lower()
+        mapping = {
+            "html": "HTML 报告", "md": "Markdown 报告", "json": "结构化数据",
+        }
+        type_desc = mapping.get(ext, "报告文件")
+        # 提取日期
+        date_part = name.split("_")[0] if "_" in name else ""
+        keywords = {
+            "summary": "每日汇总", "review": "盘后复盘",
+            "morning": "晨间资讯", "premarket": "集合竞价",
+            "news": "新闻量化",
+        }
+        kw_desc = ""
+        for kw, label in keywords.items():
+            if kw in name:
+                kw_desc = label
+                break
+        return f'{kw_desc} · {date_part}' if kw_desc and date_part else type_desc
+    
+    sections = []
+    for d in sorted_dates:
+        name_files = sorted(by_date[d], reverse=True)
+        items = "".join(
+            f'    <li><a href="{nf}"><span class="file-name">{nf}</span>{badge_html(nf)}</a>'
+            f'<div class="file-desc">{desc_html(nf)}</div></li>\n'
+            for nf in name_files
+        )
+        sections.append(
+            f'  <div class="date-group">{d}</div>\n'
+            f'  <ul class="file-list">\n{items}  </ul>'
+        )
+    
+    section_html = "\n\n".join(sections) if sections else '  <p class="empty">暂无报告</p>'
+    
+    html = f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日交易报告 | Hermes 自进化交易系统</title>
+  <style>
+    body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #0d1117; color: #c9d1d9; }}
+    h1 {{ color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 10px; }}
+    h2 {{ color: #f0c674; margin-top: 30px; }}
+    a {{ color: #58a6ff; text-decoration: none; }}
+    a:hover {{ text-decoration: underline; }}
+    .file-list {{ list-style: none; padding: 0; }}
+    .file-list li {{ padding: 12px; margin: 8px 0; background: #161b22; border: 1px solid #30363d; border-radius: 6px; transition: border-color 0.2s; }}
+    .file-list li:hover {{ border-color: #58a6ff; background: #1c2333; }}
+    .file-name {{ font-size: 16px; font-weight: 600; color: #f0c674; }}
+    .file-desc {{ font-size: 13px; color: #8b949e; margin-top: 4px; }}
+    .badge {{ display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-left: 8px; vertical-align: middle; }}
+    .badge-json {{ background: rgba(63,185,80,0.15); color: #3fb950; border: 1px solid #3fb950; }}
+    .badge-md {{ background: rgba(88,166,255,0.15); color: #58a6ff; border: 1px solid #58a6ff; }}
+    .badge-html {{ background: rgba(240,198,116,0.15); color: #f0c674; border: 1px solid #f0c674; }}
+    .date-group {{ color: #8b949e; font-size: 13px; margin-top: 20px; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid #21262d; }}
+    hr {{ border: none; border-top: 1px solid #30363d; margin: 30px 0; }}
+    .empty {{ color: #484f58; text-align: center; padding: 40px; }}
+  </style>
+</head>
+<body>
+  <h1>📅 每日交易报告</h1>
+  <p style="color:#8b949e;">Hermes 自进化交易系统 · 最后更新：{datetime.now().strftime('%Y-%m-%d %H:%M')}</p>
+
+  <h2>📋 报告列表</h2>
+
+{section_html}
+
+  <hr>
+  <p style="text-align:center; color:#484f58; font-size:12px;">
+    ⚠️ 所有交易均为模拟盘 · 由 Hermes 系统自动生成 ·
+    <a href="https://kirasq.github.io/hermes_stock/">返回首页</a> ·
+    <a href="https://github.com/kirasq/hermes_stock">GitHub 仓库</a>
+  </p>
+</body>
+</html>"""
+    
+    index_path = daily_dir / "index.html"
+    with open(index_path, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"✅ 已生成静态文件列表：{index_path} ({len(files)} 个文件)")
+
+
 def push_daily_review(date_str):
     """推送每日复盘报告"""
-    # 复制复盘报告到 docs/daily/
-    review_src = TRADING_DIR / "reviews" / f"{date_str}_review.json"
-    review_md_src = TRADING_DIR / "daily" / f"{date_str}_review.md"
-    
+    import shutil
     daily_dir = DOCS_DIR / "daily"
     daily_dir.mkdir(parents=True, exist_ok=True)
     
-    if review_src.exists():
-        import shutil
-        shutil.copy(review_src, daily_dir / f"{date_str}_review.json")
-        print(f"复制复盘 JSON：{review_src}")
+    # 复制多来源文件到 docs/daily/
+    src_pairs = [
+        (TRADING_DIR / "reviews" / f"{date_str}_review.json", f"{date_str}_review.json"),
+        (TRADING_DIR / "daily" / f"{date_str}_review.md", f"{date_str}_review.md"),
+        (TRADING_DIR / "daily" / f"{date_str}_review.html", f"{date_str}_review.html"),
+        (TRADING_DIR / "daily" / f"{date_str}_summary.md", f"{date_str}_summary.md"),
+        (TRADING_DIR / "daily" / f"{date_str}_summary.html", f"{date_str}_summary.html"),
+        (TRADING_DIR / "daily" / f"{date_str}_morning.md", f"{date_str}_morning.md"),
+        (TRADING_DIR / "daily" / f"{date_str}_morning.html", f"{date_str}_morning.html"),
+        (TRADING_DIR / "daily" / f"{date_str}_premarket.json", f"{date_str}_premarket.json"),
+    ]
+    for src, dst in src_pairs:
+        if src.exists():
+            shutil.copy(src, daily_dir / dst)
+            print(f"复制 {dst}")
     
-    if review_md_src.exists():
-        import shutil
-        shutil.copy(review_md_src, daily_dir / f"{date_str}_review.md")
-        print(f"复制复盘 MD：{review_md_src}")
+    # 重新生成静态文件列表！
+    generate_daily_index(daily_dir)
     
-    # 更新 daily/index.md
-    index_md = daily_dir / "index.md"
-    with open(index_md, "a" if index_md.exists() else "w") as f:
-        f.write(f"# 每日复盘索引\n\n")
-        f.write(f"## {date_str}\n\n")
-        f.write(f"- [JSON 报告]({date_str}_review.json)\n")
-        f.write(f"- [MD 报告]({date_str}_review.md)\n\n")
-    
-    return git_commit_push(f"📅 每日复盘 {date_str}")
+    return git_commit_push(f"📅 每日报告 {date_str}")
 
 
 def push_backtest_report(date_str):

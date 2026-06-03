@@ -5,83 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>每日交易报告 | Hermes 自进化交易系统</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #0d1117; color: #c9d1d9; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #0d1117; color: #c9d1d9; }
     h1 { color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
     h2 { color: #f0c674; margin-top: 30px; }
     a { color: #58a6ff; text-decoration: none; }
     a:hover { text-decoration: underline; }
     .file-list { list-style: none; padding: 0; }
-    .file-list li { padding: 12px; margin: 8px 0; background: #161b22; border: 1px solid #30363d; border-radius: 6px; }
-    .file-list li:hover { background: #1c2333; }
+    .file-list li { padding: 12px; margin: 8px 0; background: #161b22; border: 1px solid #30363d; border-radius: 6px; transition: border-color 0.2s; }
+    .file-list li:hover { border-color: #58a6ff; background: #1c2333; }
     .file-name { font-size: 16px; font-weight: 600; color: #f0c674; }
     .file-desc { font-size: 13px; color: #8b949e; margin-top: 4px; }
-    .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-left: 8px; }
-    .badge-json { background: #1a3a1a; color: #3fb950; border: 1px solid #3fb950; }
-    .badge-md { background: #1a2a3a; color: #58a6ff; border: 1px solid #58a6ff; }
-    .badge-html { background: #3a2a1a; color: #f0c674; border: 1px solid #f0c674; }
-    .status-bar { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 15px; margin: 20px 0; }
-    .status-item { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #21262d; }
-    .status-item:last-child { border-bottom: none; }
-    .label { color: #8b949e; }
-    .value { color: #c9d1d9; font-weight: 600; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-left: 8px; vertical-align: middle; }
+    .badge-json { background: rgba(63,185,80,0.15); color: #3fb950; border: 1px solid #3fb950; }
+    .badge-md { background: rgba(88,166,255,0.15); color: #58a6ff; border: 1px solid #58a6ff; }
+    .badge-html { background: rgba(240,198,116,0.15); color: #f0c674; border: 1px solid #f0c674; }
+    .date-group { color: #8b949e; font-size: 13px; margin-top: 20px; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid #21262d; }
+    hr { border: none; border-top: 1px solid #30363d; margin: 30px 0; }
+    .empty { color: #484f58; text-align: center; padding: 40px; }
   </style>
 </head>
 <body>
   <h1>📅 每日交易报告</h1>
-  <p>Hermes 自进化交易系统每日汇总</p>
+  <p style="color:#8b949e;">Hermes 自进化交易系统 · 最后更新：2026-06-03</p>
 
-  <div class="status-bar" id="status-bar">
-    加载中...
-  </div>
+  <h2>📋 报告列表</h2>
 
-  <h2>🗂️ 报告列表</h2>
-  <ul class="file-list" id="file-list">
-    <li>加载中...</li>
+  <div class="date-group">2026-06-03</div>
+  <ul class="file-list">
+    <li><a href="2026-06-03_summary.html"><span class="file-name">2026-06-03_summary.html</span><span class="badge badge-html">HTML</span></a><div class="file-desc">每日汇总报告 · 2026-06-03</div></li>
+    <li><a href="2026-06-03_summary.md"><span class="file-name">2026-06-03_summary.md</span><span class="badge badge-md">MD</span></a><div class="file-desc">每日汇总（Markdown）· 2026-06-03</div></li>
+    <li><a href="2026-06-03_review.html"><span class="file-name">2026-06-03_review.html</span><span class="badge badge-html">HTML</span></a><div class="file-desc">盘后复盘报告 · 2026-06-03</div></li>
+    <li><a href="2026-06-03_review.json"><span class="file-name">2026-06-03_review.json</span><span class="badge badge-json">JSON</span></a><div class="file-desc">盘后复盘结构化数据 · 2026-06-03</div></li>
   </ul>
 
-  <hr style="border-color:#30363d; margin:30px 0;">
-  <p style="text-align:center; color:#484f58;">
-    由 Hermes 自进化交易系统自动生成 · <a href="https://kirasq.github.io/hermes_stock/">返回首页</a>
+  <div class="date-group">2026-06-02</div>
+  <ul class="file-list">
+    <li><a href="2026-06-02_summary.html"><span class="file-name">2026-06-02_summary.html</span><span class="badge badge-html">HTML</span></a><div class="file-desc">每日汇总报告 · 2026-06-02</div></li>
+    <li><a href="2026-06-02_summary.md"><span class="file-name">2026-06-02_summary.md</span><span class="badge badge-md">MD</span></a><div class="file-desc">每日汇总（Markdown）· 2026-06-02</div></li>
+    <li><a href="2026-06-02_review.html"><span class="file-name">2026-06-02_review.html</span><span class="badge badge-html">HTML</span></a><div class="file-desc">盘后复盘报告 · 2026-06-02</div></li>
+    <li><a href="2026-06-02_review.json"><span class="file-name">2026-06-02_review.json</span><span class="badge badge-json">JSON</span></a><div class="file-desc">盘后复盘结构化数据 · 2026-06-02</div></li>
+    <li><a href="2026-06-02_review.md"><span class="file-name">2026-06-02_review.md</span><span class="badge badge-md">MD</span></a><div class="file-desc">盘后复盘（Markdown）· 2026-06-02</div></li>
+    <li><a href="2026-06-02_morning.html"><span class="file-name">2026-06-02_morning.html</span><span class="badge badge-html">HTML</span></a><div class="file-desc">晨间资讯报告 · 2026-06-02</div></li>
+    <li><a href="2026-06-02_morning.md"><span class="file-name">2026-06-02_morning.md</span><span class="badge badge-md">MD</span></a><div class="file-desc">晨间资讯（Markdown）· 2026-06-02</div></li>
+    <li><a href="2026-06-02_premarket.json"><span class="file-name">2026-06-02_premarket.json</span><span class="badge badge-json">JSON</span></a><div class="file-desc">集合竞价数据 · 2026-06-02</div></li>
+  </ul>
+
+  <div class="date-group">2026-06-01</div>
+  <ul class="file-list">
+    <li><a href="2026-06-01_summary.html"><span class="file-name">2026-06-01_summary.html</span><span class="badge badge-html">HTML</span></a><div class="file-desc">每日汇总报告 · 2026-06-01</div></li>
+    <li><a href="2026-06-01_summary.md"><span class="file-name">2026-06-01_summary.md</span><span class="badge badge-md">MD</span></a><div class="file-desc">每日汇总（Markdown）· 2026-06-01</div></li>
+    <li><a href="2026-06-01_review.json"><span class="file-name">2026-06-01_review.json</span><span class="badge badge-json">JSON</span></a><div class="file-desc">盘后复盘结构化数据 · 2026-06-01</div></li>
+  </ul>
+
+  <hr>
+  <p style="text-align:center; color:#484f58; font-size:12px;">
+    ⚠️ 所有交易均为模拟盘 · 由 Hermes 系统自动生成 ·
+    <a href="https://kirasq.github.io/hermes_stock/">返回首页</a> ·
+    <a href="https://github.com/kirasq/hermes_stock">GitHub 仓库</a>
   </p>
-
-  <script>
-    fetch('/hermes_stock/docs/daily/')
-      .then(r => r.text())
-      .catch(() => document.getElementById('file-list').innerHTML = '<li>无法加载文件列表</li>');
-
-    fetch('./')
-      .then(r => r.text())
-      .then(html => {
-        // 提取所有 .json 和 .md 文件
-        const links = html.match(/<a[^>]+href="([^"]+\.(?:json|md|html))"[^>]*>([^<]+)<\/a>/g) || [];
-        const files = links.map(l => {
-          const m = l.match(/href="([^"]+)"/);
-          const n = l.match(/>([^<]+)</);
-          return m && n ? {href: m[1], name: n[1]} : null;
-        }).filter(Boolean);
-
-        if (files.length === 0) {
-          document.getElementById('file-list').innerHTML = '<li>暂无报告</li>';
-          return;
-        }
-
-        // 按文件名倒序排列（最新的在前）
-        files.sort((a, b) => b.name.localeCompare(a.name));
-
-        const list = document.getElementById('file-list');
-        list.innerHTML = files.map(f => {
-          const ext = f.name.split('.').pop();
-          const badgeClass = ext === 'json' ? 'badge-json' : ext === 'md' ? 'badge-md' : 'badge-html';
-          const desc = ext === 'json' ? '结构化数据（JSON）' : ext === 'md' ? 'Markdown 报告' : 'HTML 报告';
-          const dateMatch = f.name.match(/(\d{4}-\d{2}-\d{2})/);
-          const dateStr = dateMatch ? dateMatch[1] : '';
-          return `<li>
-            <div><a href="${f.href}" class="file-name">${f.name}</a><span class="badge ${badgeClass}">${ext.toUpperCase()}</span></div>
-            <div class="file-desc">${desc}${dateStr ? ' · ' + dateStr : ''}</div>
-          </li>`;
-        }).join('');
-      })
-      .catch(() => {});
-  </script>
 </body>
 </html>
